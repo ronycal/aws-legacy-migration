@@ -36,3 +36,7 @@ Thumbs.db
 
 # Project reference documents
 *.docx
+
+# Terraform variable files containing environment-specific values
+*.tfvars
+*.tfvars.json
