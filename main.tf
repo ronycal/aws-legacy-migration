@@ -8,3 +8,15 @@ resource "aws_vpc" "main" {
     Project = "aws-legacy-migration"
   }
 }
+
+resource "aws_subnet" "public" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.1.0/24"
+  availability_zone       = "us-east-2a"
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name    = "legacy-migration-public-subnet"
+    Project = "aws-legacy-migration"
+  }
+}
