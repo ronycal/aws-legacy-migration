@@ -20,3 +20,12 @@ resource "aws_subnet" "public" {
     Project = "aws-legacy-migration"
   }
 }
+
+resource "aws_internet_gateway" "main" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name    = "legacy-migration-igw"
+    Project = "aws-legacy-migration"
+  }
+}
