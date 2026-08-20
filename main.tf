@@ -121,3 +121,17 @@ resource "aws_instance" "web" {
     Project = "aws-legacy-migration"
   }
 }
+
+resource "aws_eip" "web" {
+  domain = "vpc"
+
+  tags = {
+    Name    = "legacy-migration-web-eip"
+    Project = "aws-legacy-migration"
+  }
+}
+
+resource "aws_eip_association" "web" {
+  instance_id   = aws_instance.web.id
+  allocation_id = aws_eip.web.id
+}
